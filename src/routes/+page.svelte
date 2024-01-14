@@ -1,6 +1,6 @@
 <script>
-	import Terminal from '$lib/components/Terminal.svelte';
-	import Input from '$lib/components/Input.svelte';
+	import Terminal from "$lib/components/Terminal.svelte";
+	import Input from "$lib/components/Input.svelte";
 </script>
 
 <section id="left" class="grow px-6"></section>

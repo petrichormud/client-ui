@@ -1,18 +1,19 @@
 <script>
-	import { onMount } from 'svelte';
-	import '../../styles/xterm.css';
+	import { onMount } from "svelte";
+	import "../../styles/xterm.css";
+	import { connect } from "$lib/backend";
 
 	onMount(async () => {
-		let terminalNode = document.getElementById('terminal');
+		const terminalNode = document.getElementById("terminal");
 		if (!terminalNode) return;
 
-		const { Terminal } = await import('xterm');
-		const { FitAddon } = await import('xterm-addon-fit');
+		const { Terminal } = await import("xterm");
+		const { FitAddon } = await import("xterm-addon-fit");
 
 		const terminal = new Terminal({
 			theme: {
-				background: '#0f172a',
-				cursor: '#0f172a'
+				background: "#0f172a",
+				cursor: "#0f172a"
 			}
 		});
 		const fitAddon = new FitAddon();
@@ -21,8 +22,13 @@
 		terminal.open(terminalNode);
 		fitAddon.fit();
 
-		window.addEventListener('resize', () => {
+		window.addEventListener("resize", () => {
 			fitAddon.fit();
+		});
+
+		connect((message) => {
+			const bytes = Array.from(message.data, (char) => char.charCodeAt(0));
+			terminal.write(bytes);
 		});
 
 		// const { invoke } = await import("@tauri-apps/api");
@@ -36,7 +42,7 @@
 		//   }
 		// );
 		//
-		// invoke("connect_to_armageddon");
+		// invoke("connect");
 
 		return () => {
 			terminal.dispose();

@@ -1,13 +1,14 @@
 <script>
-	import { onMount, afterUpdate } from 'svelte';
+	import { onMount, afterUpdate } from "svelte";
+	import { send } from "$lib/backend";
 
-	let value = '';
+	let value = "";
 	let history = [];
 	let historyPosition = 0;
 	let selectValueOnUpdate = false;
 
 	onMount(async () => {
-		const textAreaNode = document.querySelector('#input-textarea');
+		const textAreaNode = document.querySelector("#input-textarea");
 		if (!textAreaNode) return;
 		textAreaNode.focus();
 	});
@@ -28,12 +29,12 @@
 	}
 
 	function handleKeyDown(event) {
-		if (event.key === 'Enter' && !event.shiftKey) {
+		if (event.key === "Enter" && !event.shiftKey) {
 			event.preventDefault();
-		} else if (event.key === 'ArrowUp') {
+		} else if (event.key === "ArrowUp") {
 			event.preventDefault();
 			historyUp();
-		} else if (event.key === 'ArrowDown') {
+		} else if (event.key === "ArrowDown") {
 			event.preventDefault();
 			historyDown();
 		}
@@ -42,11 +43,11 @@
 	function handleKeyUp(event) {
 		if (event.shiftKey) return;
 
-		if (event.key === 'Enter') {
+		if (event.key === "Enter") {
 			submitInput();
-		} else if (event.key === 'ArrowUp') {
+		} else if (event.key === "ArrowUp") {
 			event.preventDefault();
-		} else if (event.key === 'ArrowDown') {
+		} else if (event.key === "ArrowDown") {
 			event.preventDefault();
 		}
 	}
@@ -56,6 +57,8 @@
 			history.push(value);
 			historyPosition = history.length;
 		}
+
+		send(value);
 
 		selectValue();
 	}
@@ -73,7 +76,7 @@
 
 	function historyDown() {
 		if (historyPosition == history.length) {
-			value = '';
+			value = "";
 			return;
 		}
 
@@ -89,12 +92,12 @@
 		if (history[historyPosition]) {
 			value = history[historyPosition];
 		} else {
-			value = '';
+			value = "";
 		}
 	}
 
 	function selectValue() {
-		const textAreaNode = document.querySelector('#input-textarea');
+		const textAreaNode = document.querySelector("#input-textarea");
 		if (!textAreaNode) return;
 		textAreaNode.select();
 	}
@@ -105,10 +108,10 @@
 	}
 </script>
 
-<section id="input" class="w-full px-4 pt-6 pb-8">
+<section id="input" class="w-full px-4 pb-8 pt-6">
 	<textarea
 		id="input-textarea"
-		class="w-full bg-gray-800 text-white p-4 rounded focus:ring-0 focus:border-transparent border-transparent"
+		class="w-full rounded border-transparent bg-gray-800 p-4 text-white focus:border-transparent focus:ring-0"
 		{value}
 		on:input={handleInputChange}
 		on:keydown={handleKeyDown}
@@ -116,7 +119,7 @@
 		type="text"
 		rows="2"
 	/>
-	<div class="text-sm text-gray-400 flex justify-end">Press &#9166; Enter to send</div>
+	<div class="flex justify-end text-sm text-gray-400">Press &#9166; Enter to send</div>
 </section>
 
 <style>
