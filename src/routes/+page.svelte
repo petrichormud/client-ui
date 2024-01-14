@@ -1,2 +1,13 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+  import Terminal from "$lib/components/Terminal.svelte";
+  import Input from "$lib/components/Input.svelte";
+</script>
+
+<section id="left" class="grow px-6">
+</section>
+<section id="center" class="flex flex-col justify-end items-center h-full w-2/3">
+  <Terminal />
+  <Input />
+</section>
+<section id="right" class="grow px-6">
+</section>
