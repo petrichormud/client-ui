@@ -1,3 +1,5 @@
+import { BSON } from "../../node_modules/bson/lib/bson.mjs";
+
 let ws;
 
 /** Connect the web client to Reverie's websocket listener
@@ -13,7 +15,7 @@ function connect(f) {
  */
 function send(input) {
 	if (ws.readyState <= 1) {
-		ws.send(input);
+		ws.send(BSON.serialize({ action: input }));
 	}
 }
 
