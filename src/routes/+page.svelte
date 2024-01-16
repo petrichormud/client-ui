@@ -3,6 +3,10 @@
 	import Input from "$lib/components/Input.svelte";
 </script>
 
+<svelte:head>
+  <title>PetrichorMUD</title>
+</svelte:head>
+
 <section id="left" class="grow px-6"></section>
 <section id="center" class="flex h-full w-2/3 flex-col items-center justify-end">
 	<Terminal />
