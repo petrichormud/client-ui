@@ -10,9 +10,11 @@
 		const { Terminal } = await import("xterm");
 		const { FitAddon } = await import("xterm-addon-fit");
 
+    // TODO: Build objects per theme
 		const terminal = new Terminal({
 			theme: {
 				background: "hsl(222.2, 84%, 4.9%)",
+        foreground: "hsl(210, 40%, 98%)",
 				cursor: "#0f172a"
 			}
 		});

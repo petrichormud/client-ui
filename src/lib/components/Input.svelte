@@ -111,7 +111,7 @@
 <section id="input" class="w-full px-4 pb-8 pt-6">
 	<textarea
 		id="input-textarea"
-		class="w-full rounded border-transparent bg-muted p-4 text-white focus:border-transparent focus:ring-0"
+		class="w-full rounded border-transparent bg-muted p-4 text-primary focus:border-transparent focus:ring-0"
 		{value}
 		on:input={handleInputChange}
 		on:keydown={handleKeyDown}
@@ -119,7 +119,7 @@
 		type="text"
 		rows="2"
 	/>
-	<div class="flex justify-end text-sm text-gray-400">Press &#9166; Enter to send</div>
+	<div class="flex justify-end text-sm text-muted-fg">Press &#9166; Enter to send</div>
 </section>
 
 <style>
