@@ -111,7 +111,7 @@
 <section id="input" class="w-full px-4 pb-8 pt-6">
 	<textarea
 		id="input-textarea"
-		class="w-full rounded border-transparent bg-gray-800 p-4 text-white focus:border-transparent focus:ring-0"
+		class="w-full rounded border-transparent bg-muted p-4 text-white focus:border-transparent focus:ring-0"
 		{value}
 		on:input={handleInputChange}
 		on:keydown={handleKeyDown}

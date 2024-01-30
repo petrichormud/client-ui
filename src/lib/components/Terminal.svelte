@@ -12,7 +12,7 @@
 
 		const terminal = new Terminal({
 			theme: {
-				background: "#0f172a",
+				background: "hsl(222.2, 84%, 4.9%)",
 				cursor: "#0f172a"
 			}
 		});
